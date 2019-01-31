@@ -285,6 +285,16 @@
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DemoModel\DemoModel.csproj">
+      <Project>{f69b9d13-9360-4815-aa6c-d42e1e38df28}</Project>
+      <Name>DemoModel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DemoService\DemoService.csproj">
+      <Project>{f9ecb5ff-5f51-4934-b717-49873879c369}</Project>
+      <Name>DemoService</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
