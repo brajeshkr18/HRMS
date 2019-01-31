@@ -36,6 +36,12 @@ public partial class OnBoadTaskEntities : DbContext
 
     public virtual DbSet<Course> Courses { get; set; }
 
+    public virtual DbSet<UserDetail> UserDetails { get; set; }
+
+    public virtual DbSet<User> Users { get; set; }
+
+    public virtual DbSet<UserType> UserTypes { get; set; }
+
 }
 
 }
