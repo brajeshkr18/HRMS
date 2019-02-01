@@ -8,7 +8,7 @@
 
 @{
     ViewBag.Title = "User Detail";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
     UserTypeViewModel userType = null;
     Qparams qparams = new Qparams();
     if (TempData["qparams"] != null)
@@ -25,13 +25,7 @@
     var LoggedInUserType = UserAuthenticate.Role;
 
 }
-<style>
-    .greybg {
-        
-    }
-       .amount-text-dollor { position:absolute; top:10px;left: 0px;}
-    .amount-text{ padding-left:20px!important;}
-</style>
+<script src="~/AdminAsset/assets/libs/jquery/dist/jquery.min.js"></script>
 <div class="content-inner">
     <!-- Page Header-->
     <header class="page-header">
@@ -204,9 +198,7 @@
     
     <script>
     $(document).ready(function () {
-        $('.datepicker').datepicker({
-            format: 'd M yyyy'
-        });
+       
          if ("@LoggedInUserType" != "Admin") {
              if (@Model.Id != 0) {
                  $("#UserDetails_CostPerMile").attr('readonly', 'readonly');
