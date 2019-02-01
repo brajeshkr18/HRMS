@@ -1,0 +1,118 @@
+﻿@model PagedList.IPagedList<HRMS.ViewModel.Model.Users.UserViewModel>
+@using PagedList;
+@using HRMS.Model.Master;
+@using HRMS.Model.Users;
+@using HRMS.Utility;
+@using HRMS.Web.Helper
+@using HRMS.Utility.Helper
+@using PagedList.Mvc;
+@{
+    Layout = null;
+    Qparams qparams = new Qparams();
+    Qparams qparamsCloned = new Qparams();
+    if (TempData["qparams"] != null)
+    {
+        qparams = (Qparams)TempData.Peek("qparams");
+        qparamsCloned = qparams.DeepClone();
+    }
+
+    List<UserTypeViewModel> userTypes = ViewBag.UserTypes as List<UserTypeViewModel>;
+}
+<table id="zero_config" class="table table-striped table-bordered">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>MenuName</th>
+            <th>IsActive</th>
+            
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (HRMS.ViewModel.Model.Users.UserViewModel entity in Model)
+        {
+            qparamsCloned.Id = entity.Id;
+            qparamsCloned.UserId = entity.Id;
+            qparamsCloned.AddPermission = true;
+            qparamsCloned.BackRedirection = true;
+
+            qparamsCloned.DriverId = entity.Id;
+
+            <tr>
+
+                <td data-title="User">
+                    @entity.FullName
+
+                </td>
+                <td data-title="Email" class="wordbreak">@entity.Email</td>
+                <td data-title="Contact">
+                    @{
+                        string contact = string.IsNullOrWhiteSpace(entity.PhoneNumber) ? "-" : entity.PhoneNumber;
+                    }
+                    @contact
+                </td>
+
+
+                @if (true)
+                {
+                    <td data-title="Action" class="text-center">
+                        <ul class="list-inline">
+                            @*@if (UserAuthenticate.Role == AppConstant.RoleAdmin || UserAuthenticate.Role == AppConstant.RoleEmployee)
+                            {*@
+                            <li>
+                                @if (qparamsCloned.VehicleId != null)
+                                {
+                                    <a class="btn btn-outline-info btn-xs linkbutton" href="@Url.Action("VehicleDetails", "Vehicle" ,new {data=SecurityHelper.Encrypt(Newtonsoft.Json.JsonConvert.SerializeObject(qparamsCloned))})" name="edit" onclick="Loder()"><i class="fa fa-edit"></i> Edit vehicle</a>;
+                                }
+                                else
+                                {
+                                    <a class="btn btn-outline-info btn-xs linkbutton" href="@Url.Action("VehicleDetails", "Vehicle" ,new {data=SecurityHelper.Encrypt(Newtonsoft.Json.JsonConvert.SerializeObject(qparamsCloned))})" name="edit" onclick="Loder()"><i class="fa fa-edit"></i> Add vehicle</a>;
+                                }
+                                @*@qparamsCloned.Id=@entity.VehicleId*@
+
+                                @*@qparamsCloned.Id=@entity.Id*@
+                                <a class="btn btn-outline-info btn-xs linkbutton" href="@Url.Action("UserDetails", "User" ,new {data=SecurityHelper.Encrypt(Newtonsoft.Json.JsonConvert.SerializeObject(qparamsCloned))})" name="edit" onclick="Loder()"><i class="fa fa-edit"></i> Edit</a>&nbsp;
+                                @*<a onclick="DeleteUser('qBiGYsRcBB+aooxj6H4nxg==','Test')" class="btn btn-danger btn-xs linkbutton"><i class="fa fa-trash-o"></i> Delete </a>*@
+                                <a class="btn btn-outline-danger btn-xs linkbutton" data-target="#basic" data-toggle="modal" data-id="@entity.Id" name="accountStatusItem" href="#">
+                                    <i class="fa fa-trash-o"></i> Delete
+                                </a>
+
+                            </li>
+                            @*}*@
+                        </ul>
+                    </td>
+                }
+            </tr>
+        }
+    </tbody>
+    <tfoot>
+        @*<tr>
+                <th>Name</th>
+                <th>Position</th>
+                <th>Office</th>
+                <th>Age</th>
+                <th>Start date</th>
+                <th>Salary</th>
+            </tr>*@
+    </tfoot>
+
+</table>
+
+<script src="~/AdminAsset/assets/extra-libs/DataTables/datatables.min.js"></script>
+<script>
+    /****************************************
+     *       Basic Table                   *
+     ****************************************/
+    $('#zero_config').DataTable();
+</script>
+
+
+
+
+
+@if (Model.Count == 0)
+{
+    <div style="text-align: center" class="text-danger"><span>No Record Found</span></div>
+}
+
+

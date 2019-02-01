@@ -10,7 +10,7 @@
 //------------------------------------------------------------------------------
 
 
-namespace Demo.Core.EntityModel
+namespace HRMS.Core.EntityModel
 {
 
 using System;

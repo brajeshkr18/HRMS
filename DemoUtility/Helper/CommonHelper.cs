@@ -8,7 +8,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Web;
 
-namespace Demo.Utility.Helper
+namespace HRMS.Utility.Helper
 {
     public static class CommonHelper
     {

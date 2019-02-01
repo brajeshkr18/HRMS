@@ -1,4 +1,5 @@
-﻿using HRMS.Service.UserService;
+﻿using HRMS.Model.Master;
+using HRMS.Service.UserService;
 using HRMS.Utility.Helper;
 using HRMS.ViewModel;
 using HRMS.ViewModel.Model.Users;
@@ -9,7 +10,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
-using TMS.Service.User;
+using HRMS.Service.User;
 
 namespace HRMS.Controllers
 {
@@ -78,10 +79,10 @@ namespace HRMS.Controllers
                         // ViewBag.ErrorMsg = "Please check your username and password! ";
                     }
                 }
-                //catch (CustomException customException)
-                //{
-                //    ModelState.AddModelError("", customException.Message);
-                //}
+                catch (CustomException customException)
+                {
+                    ModelState.AddModelError("", customException.Message);
+                }
                 catch (Exception ex)
                 {
                     ModelState.AddModelError("", "Invalid login attempt");

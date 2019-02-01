@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Demo.Utility
+namespace HRMS.Utility
 {
     public class Enums
     {

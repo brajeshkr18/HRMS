@@ -1,4 +1,4 @@
-﻿using Demo.Core.EntityModel;
+﻿using HRMS.Core.EntityModel;
 using ExpressMapper;
 using HRMS.Model.Master;
 using System;
@@ -10,7 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 
-namespace TMS.Service.Master
+namespace HRMS.Service.Master
 {
     public class MasterService : IMasterService
     {
@@ -24,9 +24,9 @@ namespace TMS.Service.Master
         /// <returns></returns>
         
         
-        public Demo.Core.EntityModel.User GetDriverDetailById(long id)
+        public HRMS.Core.EntityModel.User GetDriverDetailById(long id)
         {
-            return Mapper.Map(_Context.Users.Where(item => item.Id == id).FirstOrDefault(), new Demo.Core.EntityModel.User());
+            return Mapper.Map(_Context.Users.Where(item => item.Id == id).FirstOrDefault(), new HRMS.Core.EntityModel.User());
         }
         
         #endregion

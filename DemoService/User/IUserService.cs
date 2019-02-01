@@ -8,7 +8,7 @@ using HRMS.Model.Users;
 using HRMS.ViewModel;
 using HRMS.ViewModel.Model.Users;
 
-namespace TMS.Service.User
+namespace HRMS.Service.User
 {
     public interface IUserService
     {
@@ -119,7 +119,7 @@ namespace TMS.Service.User
         /// </summary>
         /// <returns></returns>
         List<UserTypeViewModel> GetUserTypes();
-       
-    
+
+        List<UserViewModel> GetAllUsers(SearchingParams searchingParams);
     }
 }

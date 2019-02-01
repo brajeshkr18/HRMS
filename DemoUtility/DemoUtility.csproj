@@ -7,8 +7,8 @@
     <ProjectGuid>{93325227-A8CA-423B-B380-63E9DF996A84}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Demo.Utility</RootNamespace>
-    <AssemblyName>Demo.Utility</AssemblyName>
+    <RootNamespace>HRMS.Utility</RootNamespace>
+    <AssemblyName>HRMS.Utility</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <SccProjectName>SAK</SccProjectName>

@@ -7,9 +7,10 @@ using System.Linq;
 using System.Data.Entity;
 using HRMS.ViewModel.Model.Users;
 using HRMS.ViewModel;
-using Demo.Core.EntityModel;
+using HRMS.Core.EntityModel;
 using HRMS.Model.Users;
-using TMS.Service.User;
+using HRMS.Service.User;
+using HRMS.Model.Master;
 
 namespace HRMS.Service.UserService
 {
@@ -117,7 +118,7 @@ namespace HRMS.Service.UserService
         {
             bool status = false;
 
-            User users = new User();
+            HRMS.Core.EntityModel.User users = new HRMS.Core.EntityModel.User();
 
             Mapper.Map(userViewModel, users);
 
@@ -307,7 +308,69 @@ namespace HRMS.Service.UserService
         {
             return Mapper.Map(_Context.UserTypes.ToList(), new List<UserTypeViewModel>());
         }
-       
+        public List<UserViewModel> GetAllUsers(SearchingParams searchingParams)
+        {
+            List<UserViewModel> entities = new List<UserViewModel>();
+            // making values as trim  
+            searchingParams.Name = searchingParams.Name?.Trim();
+            searchingParams.UserTypeCode = searchingParams.UserTypeCode?.Trim();
+            searchingParams.Email = searchingParams.Email?.Trim();
+
+            string userTypeIds = string.Empty;
+            long? userTypeId = null;
+
+            if (!string.IsNullOrWhiteSpace(searchingParams.UserTypeCode))
+            {
+                userTypeId = _Context.UserTypes.Where(item => item.Code == searchingParams.UserTypeCode).Select(item => item.Id).SingleOrDefault();
+                userTypeIds = Convert.ToString(userTypeId);
+            }
+
+            if (string.IsNullOrWhiteSpace(userTypeIds) && searchingParams.UserTypeId != null && searchingParams.UserTypeId?.Count > 0)
+            {
+                userTypeIds = String.Join(",", searchingParams.UserTypeId);
+            }
+
+            var userFilter = new DataTable();
+            userFilter.Columns.AddRange(new DataColumn[]
+                {
+                    new DataColumn("Id", System.Type.GetType("System.Int64")),
+                    new DataColumn("UserTypeId", System.Type.GetType("System.String")),
+                    new DataColumn("Name", System.Type.GetType("System.String")),
+                    new DataColumn("Email", System.Type.GetType("System.String")),
+                    new DataColumn("WorkPhone", System.Type.GetType("System.String")),
+                    new DataColumn("Gender", System.Type.GetType("System.Int32") ),
+                    new DataColumn("AccountStatus", System.Type.GetType("System.Int32") ),
+                    new DataColumn("AssignedRegionId", System.Type.GetType("System.Int64")),
+                    new DataColumn("Createdby", System.Type.GetType("System.Int64")),
+                    new DataColumn("UserTypeCode", System.Type.GetType("System.String"))
+
+                });
+            // adding some data in datatable
+            userFilter.Rows.Add(
+                    searchingParams.Createdby ?? searchingParams.ReportingTo,
+                    userTypeIds,
+                    searchingParams.Name,
+                    searchingParams.Email,
+                    null,
+                    null,
+                    searchingParams.AccountStatus,
+                    null,
+                    searchingParams.Createdby,
+                    searchingParams.LoggedUserTypeCode
+                    );
+
+            var tblParam = new SqlParameter("@userFilters", SqlDbType.Structured);
+            tblParam.Value = userFilter;
+            tblParam.TypeName = "[dbo].[UserFilter]";
+            var list = _Context.Database.SqlQuery<UserViewModel>("exec [dbo].[spGetUsers] @userFilters", tblParam).ToList();
+
+            Mapper.Map(list, entities);
+            List<UserTypeViewModel> userTypes = GetUserTypes();
+            entities.ForEach(item => item.UserTypeName = userTypes.Where(usertype => usertype.Id == item.UserTypeId).Select(usertype => usertype.Name).SingleOrDefault());
+
+            return entities;
+        }
+
         #endregion
     }
 }
