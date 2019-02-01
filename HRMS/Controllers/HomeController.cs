@@ -9,7 +9,7 @@ using System.Web.Mvc;
 using System.Web.Script.Serialization;
 //using MVCCRUDKnockout.Models;
 
-namespace MVCCRUDKnockout.Controllers
+namespace HRMS.Controllers
 {
     public class HomeController : Controller
     {

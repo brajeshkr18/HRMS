@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace CarisBrook.Model.Users
+namespace HRMS.Model.Users
 {
     public partial class UserTypeViewModel
     {

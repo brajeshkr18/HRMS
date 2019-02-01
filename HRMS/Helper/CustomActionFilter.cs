@@ -1,10 +1,10 @@
-﻿using CarisBrook.Web.Helper;
-using DemoModel.ViewModel;
+﻿using HRMS.Web.Helper;
+using HRMS.ViewModel;
 using System.Web.Mvc;
 using System.Web.Routing;
+using HRMS.Model.Master;
 
-
-namespace TMS.Web.Helper
+namespace HRMS.Web.Helper
 {
     public class CustomActionFilter : ActionFilterAttribute
     {

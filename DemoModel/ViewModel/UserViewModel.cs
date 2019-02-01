@@ -1,10 +1,10 @@
-﻿using CarisBrook.Model.Users;
+﻿using HRMS.Model.Users;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 //using System.Web.Mvc;
 
-namespace CarisBrook.ViewModel.Model.Users
+namespace HRMS.ViewModel.Model.Users
 {
     public class UserViewModel
     {

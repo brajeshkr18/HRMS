@@ -1,9 +1,9 @@
-﻿using CarisBrook.Utility.Helper;
+﻿using HRMS.Utility.Helper;
 using Newtonsoft.Json;
 using System;
 
 
-namespace TMS.Web.Helper
+namespace HRMS.Web.Helper
 {
     public static class Helper
     {

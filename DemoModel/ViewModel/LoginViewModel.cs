@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace CarisBrook.ViewModel
+namespace HRMS.ViewModel
 {
     /// <summary>
     /// Login View Model

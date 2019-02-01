@@ -2,10 +2,10 @@
 using Newtonsoft.Json;
 using System.Collections;
 using System.Web;
-using CarisBrook.Service.UserService;
-using CarisBrook.Utility.Helper;
+using HRMS.Utility.Helper;
+using HRMS.Service.UserService;
 
-namespace CarisBrook.Web.Helper
+namespace HRMS.Web.Helper
 {
     public class UserAuthenticate
     {

@@ -1,24 +1,13 @@
-﻿using DemoModel.ViewModel;
+﻿using Demo.Core.EntityModel;
+using HRMS.Model.Master;
+using HRMS.ViewModel.Model.Users;
 using System.Collections.Generic;
 
-
-namespace DemoService.MenuNamespace
+namespace TMS.Service.Master
 {
     public interface IMasterService
     {
-        /// <summary>
-        /// Get all Countries
-        /// </summary>
-        /// <returns></returns>
-        List<CourseViewModel> GetCountryList();
 
-        /// <summary>
-        /// Get Country by Id
-        /// </summary>
-        /// <param name="id"></param>
-        /// <returns></returns>
-        CourseViewModel GetCountry(long id);
-
-       
+        Demo.Core.EntityModel.User GetDriverDetailById(long id);
     }
 }

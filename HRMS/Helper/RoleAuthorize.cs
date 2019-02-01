@@ -1,9 +1,8 @@
-﻿using CarisBrook.Web.Helper;
-using System.Linq;
+﻿using System.Linq;
 using System.Web.Mvc;
 using System.Web.Routing;
 
-namespace CarisBrook.Web.Helper
+namespace HRMS.Web.Helper
 {
     public class RoleAuthorize : AuthorizeAttribute
     {

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DemoModel.ViewModel
+namespace HRMS.Model.Master
 {
     /// <summary>
     /// Qparams Model for Query String params
@@ -33,5 +33,18 @@ namespace DemoModel.ViewModel
 
         public int? Status { get; set; }
         public string Code { get; set; }
+        public bool? IsViewOnlyReport { get; set; }
+        public int BookingType { get; set; }
+        public string CompanyName { get; set; }
+        public bool IsExportReport { get; set; }
+        public long? DriverId { get; set; }
+        public long? VehicleId { get; set; }
+        public string VINNumber { get; set; }
+        public Nullable<int> CompanyId { get; set; }
+        public bool IsExternalDriver { get; set; }
+        public bool IsExternalTrip { get; set; }
+        public long? FilterRailRoadId { get; set; }
+
+      
     }
 }

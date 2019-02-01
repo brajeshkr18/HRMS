@@ -5,7 +5,7 @@ using System.Text;
 using System.Web.Security;
 
 
-namespace HRMS.Utility.Helper
+namespace Demo.Utility.Helper
 {
     public static class SecurityHelper
     {

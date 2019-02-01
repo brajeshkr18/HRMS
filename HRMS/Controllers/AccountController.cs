@@ -1,22 +1,23 @@
-﻿using CarisBrook.Service.UserService;
-using CarisBrook.Utility.Helper;
-using CarisBrook.ViewModel;
-using CarisBrook.ViewModel.Model.Users;
-using CarisBrook.Web.Helper;
-using DemoModel.ViewModel;
+﻿using HRMS.Service.UserService;
+using HRMS.Utility.Helper;
+using HRMS.ViewModel;
+using HRMS.ViewModel.Model.Users;
+using HRMS.Web.Helper;
+using HRMSModel.ViewModel;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using TMS.Service.User;
 
-namespace Carisbrook.Controllers
+namespace HRMS.Controllers
 {
     //[HandleError]
     public class AccountController : Controller
     {
 
-        UserService _userService = new UserService();
+        IUserService _IUserService = new UserService();
 
         public AccountController()
         {
@@ -61,7 +62,7 @@ namespace Carisbrook.Controllers
                     model.PasswordHash = SecurityHelper.CreatePasswordHash(model.Password, "");
 
                     UserViewModel authenticatedUser = null;
-                    authenticatedUser = _userService.LoginAuthentication(model);
+                    authenticatedUser = _IUserService.LoginAuthentication(model);
 
                     if (authenticatedUser != null)
                     {

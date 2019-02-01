@@ -1,8 +1,8 @@
-﻿using CarisBrook.Web.Helper;
+﻿using HRMS.Web.Helper;
 using System.Web.Mvc;
 using System.Web.Routing;
 
-namespace Carisbrook.Web.Helper
+namespace HRMS.Web.Helper
 {
 
     public class CustomAuthorize : AuthorizeAttribute

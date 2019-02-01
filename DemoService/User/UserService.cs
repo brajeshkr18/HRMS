@@ -5,14 +5,15 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Data.Entity;
-using CarisBrook.ViewModel.Model.Users;
-using CarisBrook.ViewModel;
+using HRMS.ViewModel.Model.Users;
+using HRMS.ViewModel;
 using Demo.Core.EntityModel;
-using CarisBrook.Model.Users;
+using HRMS.Model.Users;
+using TMS.Service.User;
 
-namespace CarisBrook.Service.UserService
+namespace HRMS.Service.UserService
 {
-    public class UserService 
+    public class UserService : IUserService
     {
        
         private OnBoadTaskEntities _Context = new OnBoadTaskEntities();

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DemoModel.ViewModel
+namespace HRMS.ViewModel
 {
    public class MainMenuViewModel
     {
