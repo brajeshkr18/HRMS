@@ -56,13 +56,13 @@
                 <div class="card">
                     <div class="card-body">
                         @*<h5 class="card-title">Manage Album</h5>*@
-                        <a class="btn btn-primary btn-xs linkbutton" href="@Url.Action("AddUser", "User",new {data=0})" )" name="add">Add New User</a>
+                        <a class="btn btn-primary btn-xs linkbutton" href="@Url.Action("UserDetails", "User",new {data=""})" )" name="add">Add New User</a>
 
                         <div class="table-responsive">
                             @{Html.RenderPartial("_Users", Model);}
                             @*@{Html.RenderPartial("_Album", Model);}*@
                         </div>
-                        <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12">
+                        @*<div class="col-lg-5 col-md-5 col-sm-5 col-xs-12">
                             <div style="float:left">
                                 <label>
                                     Show <select name="lengthSelect" id="lengthSelect" aria-controls="example" class="dropdown">
@@ -80,7 +80,7 @@
                                 @Html.PagedListPager(Model, page => Url.Action("ManageUsers", new { page, sortOrder = ViewBag.CurrentSort, pageSize = ViewBag.PageSize,
                                data = SecurityHelper.Encrypt(Newtonsoft.Json.JsonConvert.SerializeObject(qparams)) }))
                             </div>
-                        </div>
+                        </div>*@
                     </div>
                 </div>
             </div>
@@ -109,6 +109,7 @@
     <!-- End footer -->
     <!-- ============================================================== -->
 </div>
+<script src="~/AdminAsset/assets/libs/jquery/dist/jquery.min.js"></script>
 <script src="~/AdminAsset/assets/extra-libs/DataTables/datatables.min.js"></script>
 <script src="~/AdminAsset/dist/js/ApplicationJs/Users.js"></script>
 <script type="text/javascript">
