@@ -26,6 +26,130 @@
 
 }
 <script src="~/AdminAsset/assets/libs/jquery/dist/jquery.min.js"></script>
+<div class="page-wrapper">
+    <!-- ============================================================== -->
+    <!-- Bread crumb and right sidebar toggle -->
+    <!-- ============================================================== -->
+    <div class="page-breadcrumb">
+        <div class="row">
+            <div class="col-12 d-flex no-block align-items-center">
+                <h4 class="page-title">Form Basic</h4>
+                <div class="ml-auto text-right">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="#">Home</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Library</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ============================================================== -->
+    <!-- End Bread crumb and right sidebar toggle -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- Container fluid  -->
+    <!-- ============================================================== -->
+    <div class="container-fluid">
+        <!-- ============================================================== -->
+        <!-- Start Page Content -->
+        <!-- ============================================================== -->
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @using (Html.BeginForm("UserDetails", "User", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new {  role = "form" }))
+        {
+            @Html.AntiForgeryToken()
+            @Html.HiddenFor(model => model.Id)
+            <div class="row">
+                <div class="col-md-6">
+
+
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title">Forms Control</h4>
+                            <div class="form-group">
+                                @*<label for="hue-demo">Hue</label>
+
+                                <input type="text" id="hue-demo" class="form-control demo minicolors-input" data-control="hue" value="#ff6161" size="7">*@
+                                @if (userType != null)
+                                {
+                                    @Html.HiddenFor(model => model.UserTypeId, new { @class = "control-label", Value = userType.Id })
+                                }
+                                else
+                                {
+
+                                     <label for="hue-demo">User Type</label>
+
+                                    @Html.DropDownListFor(x => x.UserTypeId, new SelectList(@ViewBag.UserTypes, "Id", "Name"), "-- Select User Type --", new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(m => m.UserTypeId, "", new { @class = "text-danger" })
+
+                                }
+                            </div>
+                            <div class="form-group">
+                                <label for="hue-demo">Email</label>
+                                @Html.TextBoxFor(x=>x.Email, new { @class = "form-control" })
+                               
+                            </div>
+                            <div class="form-group">
+                                <label for="position-top-right">Top right</label>
+                                @Html.TextBoxFor(x => x.Email, new { @class = "form-control" })
+                            </div>
+                            <label>Datepicker</label>
+                            <div class="input-group">
+                                <input type="text" class="form-control mydatepicker" placeholder="mm/dd/yyyy">
+                                <div class="input-group-append">
+                                    <span class="input-group-text"><i class="fa fa-calendar"></i></span>
+                                </div>
+                            </div>
+                            <label class="m-t-15">Autoclose Datepicker</label>
+                            <div class="input-group">
+                                <input type="text" class="form-control" id="datepicker-autoclose" placeholder="mm/dd/yyyy">
+                                <div class="input-group-append">
+                                    <span class="input-group-text"><i class="fa fa-calendar"></i></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="border-top">
+                            <div class="card-body">
+                                <button type="submit" class="btn btn-success">Save</button>
+                                <button type="submit" class="btn btn-primary">Reset</button>
+                                <button type="submit" class="btn btn-info">Edit</button>
+                                <button type="submit" class="btn btn-danger">Cancel</button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        }
+        <!-- editor -->
+        <!-- ============================================================== -->
+        <!-- End PAge Content -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- Right sidebar -->
+        <!-- ============================================================== -->
+        <!-- .right-sidebar -->
+        <!-- ============================================================== -->
+        <!-- End Right sidebar -->
+        <!-- ============================================================== -->
+    </div>
+    <!-- ============================================================== -->
+    <!-- End Container fluid  -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- footer -->
+    <!-- ============================================================== -->
+    <footer class="footer text-center">
+        All Rights Reserved by Matrix-admin. Designed and Developed by <a href="https://wrappixel.com">WrapPixel</a>.
+    </footer>
+    <!-- ============================================================== -->
+    <!-- End footer -->
+    <!-- ============================================================== -->
+</div>
 <div class="content-inner">
     <!-- Page Header-->
     <header class="page-header">

@@ -91,7 +91,8 @@ namespace HRMS.Controllers
                 }
                 else
                 {
-                    userTypes = _IUserService.GetUserTypes().Where(item => item.Code == qparams.UserType).ToList();
+                    //userTypes = _IUserService.GetUserTypes().Where(item => item.Code == qparams.UserType).ToList();
+                    userTypes = _IUserService.GetUserTypes().ToList();
                 }
             }
 
@@ -109,7 +110,7 @@ namespace HRMS.Controllers
             DateTime From = DateTime.MinValue, To = DateTime.MinValue;
             if (!string.IsNullOrWhiteSpace(data))
                 qparams = Helper.DecryptParamData<Qparams>(data);
-
+            //qparams.UserType = "Admin";
             TempData.Remove("qparams");
             TempData["qparams"] = qparams;
             TempData.Keep("qparams");
